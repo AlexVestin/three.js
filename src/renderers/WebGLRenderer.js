@@ -314,7 +314,7 @@ function WebGLRenderer(parameters) {
 	}
 
 	initGLContext();
-	this.forceUpdateMultisampleRenderTarget = function (framebuffer) {
+	this.forceUpdateMultisampleFramebuffer = function (framebuffer) {
 		textures.updateMultisampleRenderTarget(framebuffer);
 	};
 	// xr
