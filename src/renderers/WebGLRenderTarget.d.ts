@@ -16,6 +16,7 @@ export interface WebGLRenderTargetOptions {
 	stencilBuffer?: boolean; // true;
 	generateMipmaps?: boolean; // true;
 	depthTexture?: DepthTexture;
+	samples?: number;
 }
 
 export class WebGLRenderTarget extends EventDispatcher {
