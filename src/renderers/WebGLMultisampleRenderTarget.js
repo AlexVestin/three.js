@@ -1,35 +1,31 @@
-import { WebGLRenderTarget } from './WebGLRenderTarget.js';
+import { WebGLRenderTarget } from "./WebGLRenderTarget.js";
 
 /**
  * @author Mugen87 / https://github.com/Mugen87
  * @author Matt DesLauriers / @mattdesl
  */
 
-function WebGLMultisampleRenderTarget( width, height, options ) {
+function WebGLMultisampleRenderTarget(width, height, options) {
+	WebGLRenderTarget.call(this, width, height, options);
 
-	WebGLRenderTarget.call( this, width, height, options );
-
-	this.samples = options.samples || 4;
-
+	this.samples = options ? options.samples || 4 : 4;
 }
 
-WebGLMultisampleRenderTarget.prototype = Object.assign( Object.create( WebGLRenderTarget.prototype ), {
+WebGLMultisampleRenderTarget.prototype = Object.assign(
+	Object.create(WebGLRenderTarget.prototype),
+	{
+		constructor: WebGLMultisampleRenderTarget,
 
-	constructor: WebGLMultisampleRenderTarget,
+		isWebGLMultisampleRenderTarget: true,
 
-	isWebGLMultisampleRenderTarget: true,
+		copy: function (source) {
+			WebGLRenderTarget.prototype.copy.call(this, source);
 
-	copy: function ( source ) {
+			this.samples = source.samples;
 
-		WebGLRenderTarget.prototype.copy.call( this, source );
-
-		this.samples = source.samples;
-
-		return this;
-
+			return this;
+		},
 	}
-
-} );
-
+);
 
 export { WebGLMultisampleRenderTarget };

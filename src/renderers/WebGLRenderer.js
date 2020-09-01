@@ -314,8 +314,15 @@ function WebGLRenderer(parameters) {
 	}
 
 	initGLContext();
-	this.forceUpdateMultisampleFramebuffer = function (framebuffer) {
-		textures.updateMultisampleRenderTarget(framebuffer);
+	this.forceUpdateMultisampleFramebuffer = function (rt) {
+		textures.updateMultisampleRenderTarget(rt);
+	};
+	this.getRenderTargetProperties = function (rt) {
+		textures.getRenderTargetProperties(rt);
+	};
+
+	this.forceSetupRenderTarget = function (rt) {
+		textures.setupRenderTarget(rt);
 	};
 	// xr
 
